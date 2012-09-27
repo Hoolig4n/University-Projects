@@ -1,0 +1,18 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int length = 0, width = 0, enter = 0;
+	cout << "Input a length" << endl;
+	cin >> length;
+	cout << "Input a width" << endl;
+	cin >> width;
+
+	cout << "L:" << length << " W:" << width << endl;
+	cout << "To determine Area and Perimeter, type 0 and press enter" << endl;
+	cin >> enter;
+	cout << "Area = " << length * width << endl;
+	cout << "Perimeter = " << 2*length + 2*width << endl;
+}

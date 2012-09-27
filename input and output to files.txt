@@ -1,0 +1,20 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+
+using namespace std;
+
+int main()
+{
+	ofstream toFile;
+	toFile.open("example.txt");
+	//to not delete previous file add " ,ios::app" after the file in quotes
+
+	cout << "Here is a line of text" << endl;
+
+	toFile << "another line of text" << endl;
+
+	if(!toFile)
+		cout << "Aw, darn." << endl;
+	// ! means "not"
+}

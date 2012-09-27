@@ -1,0 +1,117 @@
+1.
+
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <string>
+#include <fstream>
+
+using namespace std;
+
+int Add(int, int);
+double Add(double, double);
+string Add(char, char);
+string Add(string, string);
+
+int main()
+{
+	int x=4, y=8;
+	double n=2.71, m=.989;
+	char c1 = 'a', c2 = 'b';
+	string text1 = "Hello ", text2 = "There.";
+
+	cout << Add(x, y) << endl;
+	cout << Add(n, m) << endl;
+	cout << Add('a', 'b') << endl;
+	cout << Add(text1, text2) << endl;
+
+	return 0;
+}
+
+int Add(int n, int m)
+{
+	return n + m;
+}
+
+double Add(double n, double m)
+{
+	return n + m;
+}
+
+string Add(char c1, char c2)
+{
+	string r;
+	r = c1;
+	r += '+';
+	r += c2;
+
+	return r;
+}
+
+string Add(string s1, string s2)
+{
+	return s1 + s2;
+}
+
+
+
+
+
+2.
+
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <string>
+#include <fstream>
+
+using namespace std;
+
+int Opposite(int);
+double Opposite(double);
+string Opposite(char);
+string Opposite(string);
+
+int main()
+{
+	int x=3;
+	double y = -2.7;
+	char a = 'a';
+	string s = "-b", s2 = "-x1", s3 = "-value", s4 = "value";
+
+	cout << "The opposites are: ";
+	cout << Opposite(x) << ' ' << Opposite(y) << ' ' << Opposite(a) << endl;
+	cout << Opposite(s) << ' ' << Opposite(s2) << ' ' << Opposite(s3) << endl;
+	cout << Opposite(s4) << endl;
+
+	return 0;
+}
+
+int Opposite(int n)
+{
+	return -n;
+}
+
+double Opposite(double n)
+{
+	return -n;
+}
+
+string Opposite(char n)
+{
+	string r;
+	r = "-";
+	r += n;
+
+	return r;
+}
+
+string Opposite(string n)
+{
+	if(n.substr(0,1) == "-") //or "if(n[0] == '-')"
+		return n.substr(1,n.length()-1);
+	else
+	{
+		return "-" + n;
+	}
+}

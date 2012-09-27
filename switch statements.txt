@@ -1,0 +1,40 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <string>
+#include <fstream>
+
+using namespace std;
+
+int main()
+{
+	int num = 0;
+
+	cout << "Input a number that is positive and less than or equal to ten.\n";
+	cin >> num;
+
+	if(!cin)
+	{	cout << "That was not a number!\n";
+		exit(0);
+	}
+
+	if(num > 10 || num < 0)
+	{	cout << "That is an invalid number!\n";
+		exit(0);
+	}
+
+	switch(num)
+	{
+	case 10: cout << "You entered a number that is even and divisible by 5.\n";
+		break;
+	case 5: cout << "You entered a number that is divisible by 5.\n";
+		break;
+	case 0:
+	case 2:
+	case 4:
+	case 6:
+	case 8: cout << "You entered a number that is even.\n";
+		break;
+	default: cout << "Your number was not even or divisible by 5. :(\n";
+	}
+}

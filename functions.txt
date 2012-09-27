@@ -1,0 +1,112 @@
+1.
+
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+
+int FindMax(int, int, int, int, int);
+double FindAverage(int, int, int, int, int);
+
+int main()
+{
+	int n1 = 0, n2 = 0, n3 = 0, n4 = 0, n5 = 0;
+
+	srand( (unsigned int) time(NULL) );
+
+	n1 = rand()%46+5;
+	n2 = rand()%46+5;
+	n3 = rand()%46+5;
+	n4 = rand()%46+5;
+	n5 = rand()%46+5;
+
+	cout << n1 << ' ' << n2 << ' ' << n3 << ' ' << n4 << ' ' << n5 << endl;
+	cout << "The max value is = " << FindMax(n1, n2, n3, n4, n5) << endl;
+	cout << "The average of the numbers = " << FindAverage(n1, n2, n3, n4, n5)
+		<< endl;
+
+	return 0;
+}
+
+int FindMax(int a, int b, int c, int d, int e)
+{
+	int max = a;
+
+	if(b > max)
+		max = b;
+	if(c > max)
+		max = c;
+	if(d > max)
+		max = d;
+	if(e > max)
+		max = e;
+
+	return max;
+	// or 'return (max);'
+}
+
+double FindAverage(int a, int b, int c, int d, int e)
+{
+	double average = 0;
+
+	average = ((a+b+c+d+e)/5.0);
+
+	return average;
+}
+
+
+
+
+
+
+
+
+
+2.
+
+
+#include <iostream>
+
+using namespace std;
+
+const double PI = 3.1415;
+
+double Area(double);
+double Volume(double);
+double SurfaceArea(double);
+
+int main()
+{
+	double r = 0;
+
+	cout << "Input a radius: \n";
+	cin >> r;
+
+	if(r<0)
+	{
+		cout << "You can't have a radius with a length less than 0!\n";
+		exit(0);
+	}
+
+	cout << "Area of circle = " << Area(r) << endl;
+	cout << "Volume of sphere = " << Volume(r) << endl;
+	cout << "Surface Area of sphere = " << SurfaceArea(r) << endl;
+
+	return 0;
+}
+
+double Area(double r)
+{
+	return (PI*r*r);
+}
+
+double Volume(double r)
+{
+	return ((4/3.0)*PI*r*r*r);
+}
+
+double SurfaceArea(double r)
+{
+	return (4*PI*r*r);
+	// or 'return (4*Area(r))' , but not as efficient.
+}
