@@ -1,0 +1,115 @@
+
+
+
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package program3;
+
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Scanner;
+/** 
+ *
+ * @author Charles
+ */
+public class Program3 {
+    //Declare Variables
+    static final String NAME1 = "Cougar";
+    static final String SYMBOL1 = "SIUE";
+    
+    public static void main(String[] args) {
+        //Declare Scanner 
+        Scanner keyboard = new Scanner(System.in);
+        
+        //Declare Stock Name
+        Stock Name1 = new Stock();
+        Name1.setName(NAME1);
+        //Declare Symbol Name
+        Stock Symbol1 = new Stock();
+        Symbol1.setSymbol(SYMBOL1);
+        //Set Characteristics
+        Name1.setPreviousStock(100.00);
+
+    
+         //Display Welcome Message
+        System.out.println("Welcome to the Weekly Stock Tracker! ");    
+        System.out.println("We are Tracking the Value of " + Name1.getName()+ "(" + Symbol1.getSymbol() + ") Stock.");
+        System.out.println("");
+        System.out.println("Monday      : Opening price: $" + Name1.getPreviousStock());
+        System.out.print("Enter the Price at the end of the Day: ");  
+        Name1.setCurrentStock(keyboard.nextDouble());
+        System.out.println("Percent Change for the Day " + Name1.calculate());
+        System.out.println("");
+        
+        System.out.println("Tuesday     : Opening Price: $" + Name1.getCurrentStock());
+        System.out.print("Enter the Price at the end of the Day: ");
+        Name1.setCurrentStock(keyboard.nextDouble());
+        System.out.println("Percent Change for the Day " + Name1.calculate());
+        System.out.println("");
+        
+        System.out.println("Wednesday     : Opening Price: $" + Name1.getCurrentStock());
+        System.out.print("Enter the Price at the end of the Day: ");
+        Name1.setCurrentStock(keyboard.nextDouble());
+        System.out.println("Percent Change for the Day " + Name1.calculate());
+        System.out.println("");
+        
+        System.out.println("Thursday     : Opening Price: $" + Name1.getCurrentStock());
+        System.out.print("Enter the Price at the end of the Day: ");
+        Name1.setCurrentStock(keyboard.nextDouble());
+        System.out.println("Percent Change for the Day " + Name1.calculate());
+        System.out.println("");
+        
+        System.out.println("Friday     : Opening Price: $" + Name1.getCurrentStock());
+        System.out.print("Enter the Price at the end of the Day: ");
+        Name1.setCurrentStock(keyboard.nextDouble());
+       System.out.println("Percent Change for the Day " + Name1.calculate());
+        System.out.println("");
+        
+        Name1.setPreviousStock(100.00);
+        System.out.println("Value at the Start of the Week: " + Name1.getPreviousStock());
+        System.out.println("Value at the End of the Week: " + Name1.getCurrentStock());
+        System.out.println("Percentage Change over the Week " + Name1.calculate());
+    }
+}
+
+
+
+
+
+
+
+//Setters
+   public void setName(String newName) {
+       setEverything(this.currentStock, this.previousStock, this.Symbol, newName);
+   }
+   public void setSymbol(String newSymbol) {
+       setEverything(this.currentStock, this.previousStock, newSymbol, this.Name);
+   }
+
+    public void setCurrentStock(double newCurrentStock) {
+        setEverything(newCurrentStock, this.previousStock, this.Symbol, this.Name);
+    }
+
+    public void setPreviousStock(double newPreviousStock) {
+        setEverything(this.currentStock, newPreviousStock, this.Symbol, this.Name);
+
+
+    }
+
+
+
+
+
+//Designated Setter
+    private void setEverything(double newCurrentStock, double newPreviousStock, String newName, String newSymbol) {
+        if (newCurrentStock > 0.0) {
+            currentStock = newCurrentStock;
+        } 
+        if (newPreviousStock > 0.0) {
+            previousStock = newPreviousStock;
+        }
+        Name = newName;
+        Symbol = newSymbol;

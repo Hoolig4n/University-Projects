@@ -1,0 +1,53 @@
+/*
+ * Charles Roberts
+ * Lab 3
+ * CS 140-025
+ * 2/1/2012
+ */
+package introjframelab;
+
+import java.awt.Color;
+import javax.swing.JFrame;
+import java.awt.Graphics; 
+import javax.swing.JOptionPane;
+
+
+public class IntroJFrameLab extends JFrame {
+
+    private static final int FRAME_SIZE = 400;
+    private int radius, degrees;
+
+    public static void main(String[] args) {
+    IntroJFrameLab guiWindow = new IntroJFrameLab ();
+    guiWindow.setSize(FRAME_SIZE, FRAME_SIZE);
+    guiWindow.setDefaultCloseOperation(EXIT_ON_CLOSE);
+    String valueString;
+    //Ask the user to enter a desired radius
+    valueString = JOptionPane.showInputDialog("Enter the radius of the circle?");
+    guiWindow.radius = Integer.parseInt(valueString);
+    //Ask the user to enter a desired Degree for the angle
+    valueString = JOptionPane.showInputDialog("How many degrees is the angle?");
+    guiWindow.degrees = Integer.parseInt(valueString); 
+    //sets the window as visible
+    guiWindow.setVisible(true);        
+
+    }
+        @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+        Graphics canvas = getContentPane().getGraphics();
+        int width = this.getContentPane().getWidth();
+        int height = this.getContentPane().getHeight();
+        canvas.drawLine(width/2, 0, width/2, height); // draws y axis.
+        canvas.drawLine(0, height/2, width, height/2);// draws x axis.
+        canvas.drawOval(width/2-radius, height/2-radius, 
+                        radius * 2, radius * 2);
+        canvas.setColor(Color.RED);
+        canvas.fillArc(width/2-radius, height/2-radius, 
+                        radius * 2, radius * 2, 0, degrees);
+        canvas.setColor(Color.BLACK);
+
+    }
+
+
+}

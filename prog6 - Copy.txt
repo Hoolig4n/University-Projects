@@ -1,0 +1,205 @@
+/*Charles Roberts
+ * CS 140-025
+ * 4/27/2012
+ * Program 6
+ */
+
+package program6;
+
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
+public class Program6 {
+
+    public static final String INPUT_FILE_NAME = "grades.txt";
+    public static final String OUTPUT_FILE_NAME = "gradesChart.txt";
+    
+    public static void main(String[] args) {
+        
+        //Declare Arrays
+        int[] gradeOne = new int[100];
+        int[] gradeTwo = new int[100];
+        int[] gradeThree = new int[100];
+        
+        //Declare Variables
+        int examNum = 1;
+        int examOneA = 0;
+        int examOneB = 0;
+        int examOneC = 0;
+        int examOneD = 0;
+        int examOneF = 0;
+        int examTwoA = 0;
+        int examTwoB = 0;
+        int examTwoC = 0;
+        int examTwoD = 0;
+        int examTwoF = 0;
+        int examThreeA = 0;
+        int examThreeB = 0;
+        int examThreeC = 0;
+        int examThreeD = 0;
+        int examThreeF = 0;
+        int totalA = 0;
+        int totalB = 0;
+        int totalC = 0;
+        int totalD = 0;
+        int totalF = 0;
+        //Declare Scanner
+        Scanner fin = null;
+          try {
+            fin = new Scanner(new File(INPUT_FILE_NAME));
+        } catch (FileNotFoundException e) {
+            System.err.println("Error opening the file " + INPUT_FILE_NAME);
+            System.exit(1);
+        }// end try
+        
+          //Declare PrintWriter
+        PrintWriter fout = null;
+         
+         //Verify the output file is created
+         try {
+            fout = new PrintWriter(OUTPUT_FILE_NAME);
+        } catch (FileNotFoundException e) {
+            System.err.println("Error opening the file " + OUTPUT_FILE_NAME);
+            System.exit(1);
+        }
+        //Build the Arrays
+         while (fin.hasNext()){
+            for (int i = 0; i < 100; i++) {
+                gradeOne[i] = fin.nextInt();
+                gradeTwo[i] = fin.nextInt();
+                gradeThree[i] = fin.nextInt();
+            }
+        }
+        //Get Exam 1 Scores
+         for (int i = 0; i < gradeOne.length; i++) {
+            if (gradeOne[i] >= 90){
+                examOneA++;
+            }
+            if (gradeOne[i] >= 80 && gradeOne[i] < 90){
+                examOneB++;
+            }
+            if (gradeOne[i] >= 70 && gradeOne[i] < 80){
+                examOneC++;
+            }
+            if (gradeOne[i] >= 60 && gradeOne[i] < 70){
+                examOneD++;
+            }
+            if (gradeOne[i] < 60) {
+                examOneF++;
+            }
+        } 
+            //Get Exam 2 Scores
+            for (int i = 0; i < gradeTwo.length; i++) {
+            if (gradeTwo[i] >= 90){
+                examTwoA++;
+            }
+            if (gradeTwo[i] >= 80 && gradeTwo[i] < 90){
+                examTwoB++;
+            }
+            if (gradeTwo[i] >= 70 && gradeTwo[i] < 80){
+                examTwoC++;
+            }
+            if (gradeTwo[i] >= 60 && gradeTwo[i] < 70){
+                examTwoD++;
+            }
+            if (gradeTwo[i] < 60) {
+                examTwoF++;
+            }
+        }
+         
+         //Get Exam 3 Scores
+            for (int i = 0; i < gradeThree.length; i++) {
+            if (gradeThree[i] >= 90){
+                examThreeA++;
+            }
+            if (gradeThree[i] >= 80 && gradeThree[i] < 90){
+                examThreeB++;
+            }
+            if (gradeThree[i] >= 70 && gradeThree[i] < 80){
+                examThreeC++;
+            }
+            if (gradeThree[i] >= 60 && gradeThree[i] < 70){
+                examThreeD++;
+            }
+            if (gradeThree[i] < 60) {
+                examThreeF++;
+            }
+        }
+            
+            //Display the Results for the 3 exams
+            fout.println("   Exam " + examNum);
+            fout.println("Number of A's: " + examOneA);
+            fout.println("Number of B's: " + examOneB);
+            fout.println("Number of C's: " + examOneC);
+            fout.println("Number of D's: " + examOneD);
+            fout.println("Number of F's: " + examOneF);
+            fout.println("");
+            examNum++;   
+        
+            fout.println("   Exam " + examNum);
+            fout.println("Number of A's: " + examTwoA);
+            fout.println("Number of B's: " + examTwoB);
+            fout.println("Number of C's: " + examTwoC);
+            fout.println("Number of D's: " + examTwoD);
+            fout.println("Number of F's: " + examTwoF);
+            fout.println("");
+            examNum++;   
+        
+            fout.println("   Exam " + examNum);
+            fout.println("Number of A's: " + examThreeA);
+            fout.println("Number of B's: " + examThreeB);
+            fout.println("Number of C's: " + examThreeC);
+            fout.println("Number of D's: " + examThreeD);
+            fout.println("Number of F's: " + examThreeF);
+            fout.println("");
+            examNum++;   
+        
+            //Get Final Grades
+            for (int i = 0; i < 100; i++) {
+            double Totalint;
+            Totalint =  (gradeOne[i] + gradeTwo[i] + gradeThree[i]) / 3.0;
+                   
+            if (Totalint >= 90.0){
+                totalA++;
+            }
+            if (Totalint >= 80.00 && gradeThree[i] <= 89.9){
+                totalB++;
+            }
+            if (Totalint >= 70.00 && gradeThree[i] <= 79.9){
+                totalC++;
+            }
+            if (Totalint >= 60.00 && gradeThree[i] <= 69.9){
+                totalD++;
+            }
+            if (Totalint < 59.9) {
+                totalF++;
+            }
+            
+            }
+            
+            //Display the Final Grade Results   
+            fout.println(" Final Grades");
+            fout.println("Number of A's: " + totalA);
+            fout.println("Number of B's: " + totalB);
+            fout.println("Number of C's: " + totalC);
+            fout.println("Number of D's: " + totalD);
+            fout.println("Number of F's: " + totalF);
+        
+        //Close my streams
+         fout.close();
+         fin.close();
+         
+         System.out.println("File " + OUTPUT_FILE_NAME + " was Created Successfully!");
+    }
+        private static int[] clear(int[] myArray){
+        for (int i = 0; i < myArray.length; i++) {
+        myArray[i] = 0;  
+    }
+        return myArray;
+    }
+       
+            
+}
+        

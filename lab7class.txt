@@ -1,0 +1,108 @@
+/* Charles Roberts
+ * 2/29/2012
+ * CS140-025
+ * ComboLock Class
+ */
+package lab7;
+
+public class ComboLock {
+ private int number1;
+ private int number2;
+ private int number3;
+
+public static final int SMALLEST_NUMBER = 1;
+public static final int LARGEST_NUMBER = 39;
+
+public ComboLock() {
+    number1 = SMALLEST_NUMBER;
+    number2 = SMALLEST_NUMBER;
+    number3 = SMALLEST_NUMBER;
+}
+
+public ComboLock(int startingNumber1, int startingNumber2, int startingNumber3) {
+    
+    if (startingNumber1 < SMALLEST_NUMBER || startingNumber1 > LARGEST_NUMBER){
+        number1 = SMALLEST_NUMBER;
+    }
+    else
+    {
+        number1 = startingNumber1;
+    }
+    
+    
+    
+    
+    if (startingNumber2 < SMALLEST_NUMBER || startingNumber2 > LARGEST_NUMBER){
+        number2 = SMALLEST_NUMBER;
+    }
+    else
+    {
+        number2 = startingNumber2;
+    }
+    
+    
+    
+    
+    if (startingNumber3 < SMALLEST_NUMBER || startingNumber3 > LARGEST_NUMBER){
+        number3 = SMALLEST_NUMBER;
+    }
+    else
+    {
+        number3 = startingNumber3;
+    }
+    
+    }
+
+public int getNumber1() {
+  return number1;  
+}
+
+public int getNumber2() {
+    return number2;
+}
+
+public int getNumber3() {
+    return number3;
+}
+
+public boolean setNumber1(int newNumber1) {
+  if (newNumber1 < SMALLEST_NUMBER || newNumber1 > LARGEST_NUMBER){
+      return false;
+  }else {
+      number1=newNumber1;
+      return true;
+  }   
+}
+
+public boolean setNumber2(int newNumber2) {
+ if (newNumber2 < SMALLEST_NUMBER || newNumber2 > LARGEST_NUMBER){
+     return false;
+ }else {
+     number2=newNumber2;
+     return true;
+ }   
+}
+
+public boolean setNumber3(int newNumber3) {
+ if (newNumber3 < SMALLEST_NUMBER || newNumber3 > LARGEST_NUMBER){
+     return false;
+ }else {
+     number3=newNumber3;
+     return true;
+ }
+}
+
+public boolean openLock(int firstNumber, int secondNumber, int thirdNumber) {
+  if (number1 == firstNumber && number2 == secondNumber && number3 == thirdNumber){
+      return true;
+  }else{
+      return false;
+  }  
+}
+
+@Override
+public String toString() {
+  return "ComboLock{" + "number1=" + number1 + ", number2=" + number2 + ", number3=" + number3 + '}';
+}
+
+}

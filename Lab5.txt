@@ -1,0 +1,60 @@
+/*
+ * Charles Roberts
+ * Lab 5
+ * CS 140-025
+ * 2/15/2012
+ */
+package lab5;
+
+
+import java.util.Scanner;
+
+
+
+public class Lab5 {
+
+    
+    public static void main(String[] args) {
+    int number = 0;
+    int countUp = 0;   
+    Scanner keyboard = new Scanner(System.in);
+    
+    //Create input error Trap using a do while
+    do{  
+        System.out.print("Enter a number 1-9!: ");
+        number = keyboard.nextInt(); 
+    } while(number < 1 || number > 9);
+    
+    //Create a for loop to countUp the Numbers
+    for (countUp = 1; countUp <= number; countUp++)
+    {
+        System.out.println(countUp);
+    }
+    
+    //Nested loops to print the rectable and triangle
+    for(int count = 1; count <= number; count++)
+    {
+        for(int innerCount = 1; innerCount <= number; innerCount++)
+        {
+            System.out.print(count);
+        }
+        System.out.println();
+    }
+    
+    
+    for(int count = 1; count <= number; count++)
+    {
+        for(int innerCount = 1; innerCount <= count; innerCount++)
+        {
+            System.out.print(count);
+        }
+        System.out.println();
+    }
+    
+    
+    
+    
+    
+    
+    }
+}

@@ -1,0 +1,145 @@
+/* Charles Roberts
+ * 2-8-2012
+ * Lab 4
+ * CS 140-025
+ * 2-8-2012
+ * Asks the user for food choice and displays their choices
+ * Uses if statements
+ */
+package lab4;
+
+import java.util.Scanner;
+
+public class Lab4 {
+ //Declare Constants
+    public static final String ENTREE_NAME1 = "Haggis";
+    public static final double ENTREE_PRICE1 = 3.50;
+    
+    public static final String ENTREE_NAME2 = "Tripe";
+    public static final double ENTREE_PRICE2 = 3.00;
+    
+    public static final String SIDE_NAME1 = "Fries";
+    public static final double SIDE_PRICE1 = 1.00;
+    
+    public static final String SIDE_NAME2 = "Chips";
+    public static final double SIDE_PRICE2 = 1.50;
+    
+    public static final String DRINK_NAME1 = "Tea";
+    public static final double DRINK_PRICE1 = 1.50;
+    
+    public static final String DRINK_NAME2 = "Soda";
+    public static final double DRINK_PRICE2 = 1.00;
+    
+    public static final String DESSERT_NAME1 = "Cake";
+    public static final double DESSERT_PRICE1 = 1.25;
+    
+    public static final String DESSERT_NAME2 = "Gum";
+    public static final double DESSERT_PRICE2 = 1.50;
+    
+    public static void main(String[] args) {
+       
+        Scanner keyboard = new Scanner(System.in);
+        //Declare Variables
+        int entreeChoice;
+        int sideChoice;
+        int drinkChoice;
+        int dessertChoice;
+        
+        double totalCost = 0;
+        // ask which entree
+        System.out.println("Which Entree Would You like?");
+        System.out.printf("1) %4s : $%1.2f\n",
+                ENTREE_NAME1, ENTREE_PRICE1);
+        System.out.printf("2) %5s : $%1.2f\n",
+                ENTREE_NAME2, ENTREE_PRICE2);
+        System.out.print("?:");
+        //Read their choice and store it
+        entreeChoice = keyboard.nextInt();
+        //ask which side
+        System.out.println("Which Side Would You like?");
+        System.out.printf("1 %6s : $%1.2f\n",
+                SIDE_NAME1, SIDE_PRICE1);       
+        System.out.printf("2) %5s : $%1.2f\n",
+                SIDE_NAME2, SIDE_PRICE2);
+        System.out.print("?:");
+        //Read their choice and store it
+        sideChoice = keyboard.nextInt();
+        //ask which drink
+        System.out.printf("1 %6s : $%1.2f\n",
+                DRINK_NAME1, DRINK_PRICE1);       
+        System.out.printf("2) %5s : $%1.2f\n",
+                DRINK_NAME2, DRINK_PRICE2);
+        System.out.print("?:");
+        //Read their choice and store it
+        drinkChoice = keyboard.nextInt();
+        // ask which dessert
+        System.out.printf("1 %6s : $%1.2f\n",
+                DESSERT_NAME1, DESSERT_PRICE1);       
+        System.out.printf("2) %5s : $%1.2f\n",
+                DESSERT_NAME2, DESSERT_PRICE2);
+        System.out.print("?:");
+        //Read their choice and store it
+        dessertChoice = keyboard.nextInt();
+        
+        // Print the output
+        System.out.println("Your Meal:");
+        System.out.println("Item:        Choice:         Cost:");
+        if(entreeChoice == 1)
+        {
+        System.out.printf("Entree       %6s         $%1.2f\n",
+                ENTREE_NAME1, ENTREE_PRICE1);
+                totalCost = totalCost + ENTREE_PRICE1;
+        }
+        else
+        {
+          System.out.printf("Entree     %6s           $%1.2f\n",
+                ENTREE_NAME2, ENTREE_PRICE2);  
+                totalCost = totalCost + ENTREE_PRICE2;
+        }
+    
+    
+        if(sideChoice == 1)
+        {
+        System.out.printf("Side         %6s           $%1.2f\n",
+                SIDE_NAME1, SIDE_PRICE1);
+                totalCost = totalCost + SIDE_PRICE1;
+        }
+        else
+        {
+          System.out.printf("Side       %6s           $%1.2f\n",
+                SIDE_NAME2, SIDE_PRICE2);  
+                totalCost = totalCost + SIDE_PRICE2;
+        }
+    
+        if(drinkChoice == 1)
+        {
+        System.out.printf("Drink        %6s           $%1.2f\n",
+                DRINK_NAME1, DRINK_PRICE1);
+                totalCost = totalCost + DRINK_PRICE1;
+        }
+        else
+        {
+          System.out.printf("Drink       %6s           $%1.2f\n",
+                DRINK_NAME2, DRINK_PRICE2);  
+                totalCost = totalCost + DRINK_PRICE2;
+        }
+        
+        if(dessertChoice == 1)
+        {
+        System.out.printf("Dessert       %6s           $%1.2f\n",
+                DESSERT_NAME1, DESSERT_PRICE1);
+                totalCost = totalCost + DESSERT_PRICE1;
+        }
+        else
+        {
+          System.out.printf("Dessert     %6s           $%1.2f\n",
+                DESSERT_NAME2, DESSERT_PRICE2);  
+                totalCost = totalCost + DESSERT_PRICE2;
+        }
+        //Print the total
+        System.out.printf("Total Charge:                $%1.2f\n", totalCost);
+    
+    
+    
+    }
+}

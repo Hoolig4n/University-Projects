@@ -1,0 +1,172 @@
+/*Charles Roberts
+ * CS 140-025
+ * 4/27/2012
+ * Program 6
+ * Reads Students Exams and displays their statistics as well as their final grade based on their exam score.
+ */
+package program6;
+
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
+public class Program6 {
+
+    //Declare Arrays and Variables used throughout Program
+    public static int[] gradeOne = new int[100];
+    public static int[] gradeTwo = new int[100];
+    public static int[] gradeThree = new int[100];
+    public static double[] finalGrade = new double[100];
+    public static int examA, examB, examC, examD, examF, examNum = 1;
+    public static final String INPUT_FILE_NAME = "grades.txt";
+    public static final String OUTPUT_FILE_NAME = "gradesChart.txt";
+    private static PrintWriter fout = null;
+
+    public static void main(String[] args) {
+
+
+        //Declare Scanner
+        Scanner fin = null;
+        try {
+            fin = new Scanner(new File(INPUT_FILE_NAME));
+        } catch (FileNotFoundException e) {
+            System.err.println("Error opening the file " + INPUT_FILE_NAME);
+            System.exit(1);
+        }// end try
+
+
+        //Verify the output file is created
+        try {
+            fout = new PrintWriter(OUTPUT_FILE_NAME);
+        } catch (FileNotFoundException e) {
+            System.err.println("Error opening the file " + OUTPUT_FILE_NAME);
+            System.exit(1);
+        }// end try
+        
+        //Build the Arrays
+        while (fin.hasNext()) {
+            for (int i = 0; i < 100; i++) {
+                gradeOne[i] = fin.nextInt();
+                gradeTwo[i] = fin.nextInt();
+                gradeThree[i] = fin.nextInt();
+            }
+        }
+
+        //Display the Statistics
+        fout.println("    Exam " + examNum);
+        getGrades(gradeOne);
+        menuDisplay(gradeOne);
+        fout.println("");
+        clearExam();
+        examNum++;
+
+        fout.println("    Exam " + examNum);
+        getGrades(gradeTwo);
+        menuDisplay(gradeTwo);
+        fout.println("");
+        clearExam();
+        examNum++;
+
+        fout.println("    Exam " + examNum);
+        getGrades(gradeThree);
+        menuDisplay(gradeThree);
+        clearExam();
+        fout.println("");
+        examNum++;
+
+        fout.println("   Final Grades");
+        getFinal(finalGrade);
+        menuDisplay(finalGrade);
+
+
+        //Close my streams
+        fout.close();
+        fin.close();
+
+        System.out.println("File " + OUTPUT_FILE_NAME + " was Created Successfully!");
+    }
+    //method to display exam statis
+    private static void menuDisplay(int[] grades) {
+        fout.println("Number of A's: " + examA);
+        fout.println("Number of B's: " + examB);
+        fout.println("Number of C's: " + examC);
+        fout.println("Number of D's: " + examD);
+        fout.println("Number of F's: " + examF);
+        fout.println("");
+    }
+    //Overloaded function to display stats for the double array
+    private static void menuDisplay(double[] grades) {
+        fout.println("Number of A's: " + examA);
+        fout.println("Number of B's: " + examB);
+        fout.println("Number of C's: " + examC);
+        fout.println("Number of D's: " + examD);
+        fout.println("Number of F's: " + examF);
+        fout.println("");
+    }
+    //gets the number each grade appears
+    public static int[] getGrades(int[] grades) {
+        for (int i = 0; i < 100; i++) {
+            if (grades[i] >= 90) {
+                examA++;
+            }
+            if (grades[i] >= 80 && grades[i] < 90) {
+                examB++;
+            }
+            if (grades[i] >= 70 && grades[i] < 80) {
+                examC++;
+            }
+            if (grades[i] >= 60 && grades[i] < 70) {
+                examD++;
+            }
+            if (grades[i] < 60) {
+                examF++;
+            }
+
+        }
+        return grades;
+    }
+    //Gets the final statistics
+    public static double[] getFinal(double[] finalGrade) {
+        for (int i = 0; i < 100; i++) {
+            double Totalint;
+            Totalint = (gradeOne[i] + gradeTwo[i] + gradeThree[i]) / 3.0;
+
+            if (Totalint >= 90.0) {
+                examA++;
+            }
+            if (Totalint >= 80.00 && Totalint <= 89.9) {
+                examB++;
+            }
+            if (Totalint >= 70.00 && Totalint <= 79.9) {
+                examC++;
+            }
+            if (Totalint >= 60.00 && Totalint <= 69.9) {
+                examD++;
+            }
+            if (Totalint < 59.9) {
+                examF++;
+            }
+
+        }
+        return finalGrade;
+    }
+    //Clears the variables that hold the grades, but doesn't clear the arrays themselves
+    public static void clearExam() {
+        if (examA > 0) {
+            examA = 0;
+        }
+        if (examB > 0) {
+            examB = 0;
+        }
+        if (examC > 0) {
+            examC = 0;
+        }
+        if (examD > 0) {
+            examD = 0;
+        }
+        if (examF > 0) {
+            examF = 0;
+        }
+    }
+}

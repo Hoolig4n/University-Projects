@@ -1,0 +1,92 @@
+/*Charles Roberts
+ *
+ * 
+ * 
+ */
+package program5;
+
+
+public class Program5 {
+
+    
+    public static void main(String[] args) {
+        int[] myArray = new int[20];
+        System.out.println("The Array Is:");      
+        myArray = reset(myArray);
+        for (int i = 0; i < 20; i++) {
+        System.out.print(myArray[i] + " ");    
+        }
+        System.out.println("");
+        myArray = square(myArray);
+        for (int i = 0; i < 20; i++) {
+        System.out.print(myArray[i] + " ");    
+        }
+        System.out.println("");
+        myArray = half(myArray);
+        for (int i = 0; i < 20; i++) {
+        System.out.print(myArray[i] + " "); 
+        }
+        System.out.println("");
+        myArray = accumulate(myArray);
+        for (int i = 0; i < 20; i++) {
+        System.out.print(myArray[i] + " "); 
+        }
+       
+        exit();
+    }
+public void menu(){
+    
+}
+private static int[] reset(int[] myArray){
+    int ARRAY_SIZE = 20;
+    for (int i = 0; i < ARRAY_SIZE; i++) {
+      myArray[i] = i;  
+    }
+    return myArray;
+}
+private static int[] square(int myArray[]){
+    for (int i = 0; i < 20; i++) {
+       myArray[i] = myArray[i] * i; 
+    }
+    return myArray;
+}
+private static int[] half(int myArray[]){
+    for (int i = 0; i < 20; i++) {
+        myArray[i] = myArray[i] / 2;
+    }
+    return myArray;
+}
+private static int[] accumulate(int myArray[]){
+    int[] tmpArray = new int[20];
+
+    for (int i = 0; i < 20; i++) {
+        for (int j = 0; j <= i; j++) {
+            tmpArray[i] += myArray[j];
+        }
+    }
+
+    return tmpArray;
+}
+private static int[] transpose(int myArray[]){
+    
+    return myArray;
+}
+private static int[] shift(int myArray[]){
+    int temp;
+    for (int i = 0; i < 20; i++) {
+        temp = myArray[i-1];
+        myArray[temp] = myArray[i];
+        if (i == -1) {
+            i = 20;
+        }
+    }
+    return myArray;
+}
+private static int[] reverse(int myArray[]){
+    
+    return myArray;
+}
+private static void exit(){
+  System.exit(0);  
+}
+}

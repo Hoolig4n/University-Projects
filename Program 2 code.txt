@@ -1,0 +1,76 @@
+package program2;
+
+import javax.swing.JFrame;
+import java.awt.*;
+import javax.swing.JOptionPane;
+
+public class Program2 extends JFrame {
+    
+    private static final int FRAME_SIZE = 500;
+    private static final int MAX_NUM = 40;
+    private static final int MIN_NUM = 10;
+    private static int lineNumber;
+
+public static void main(String[] args) {
+       
+    Program2 guiWindow = new Program2 ();
+    //Set Frame Size
+    guiWindow.setSize(FRAME_SIZE, FRAME_SIZE);
+    guiWindow.setDefaultCloseOperation(EXIT_ON_CLOSE);
+    String valueString;
+    
+    //Create input error trap to ask for Number of lines in the Grid
+    do{
+        valueString = JOptionPane.showInputDialog("Enter the Number of Lines in the Grid (10-40)");
+        guiWindow.lineNumber = Integer.parseInt(valueString);
+    } while(lineNumber < MIN_NUM || lineNumber > MAX_NUM);
+    
+    //Sets window to Visible
+    guiWindow.setVisible(true);
+
+    }
+
+    @Override
+    public void paint(Graphics g) {
+    super.paint(g);
+    Graphics canvas = getContentPane().getGraphics();
+    //Gather width,height information
+    int width = this.getContentPane().getWidth();
+    int height = this.getContentPane().getHeight();
+    //Declare my Variables
+    double leftGrid = width * .1;
+    int leftOfGrid = (int)leftGrid;
+    double rightGrid = width * .9;
+    int rightOfGrid = (int) rightGrid;
+    double topGrid = height * .1;
+    int topOfGrid = (int)topGrid;
+    double bottomGrid = height * .9;
+    int bottomOfGrid = (int) bottomGrid;
+    int numberOfGaps = lineNumber - 1;
+    double sVertical = (height * .8) / numberOfGaps;
+    int spaceVertical = (int) sVertical;
+    double sHorizontal = (width * .8) / numberOfGaps;
+    int spaceHorizontal = (int) sHorizontal;
+    
+    //Draw the Horizontal Lines
+     int topY = topOfGrid;
+    for(int count = 1; count <= lineNumber; count++){
+        canvas.drawLine(leftOfGrid, topY, rightOfGrid, topY);
+        topY = topY + spaceVertical;
+        
+    }
+    
+    //Draw the Vertical Lines
+     int leftX = leftOfGrid;
+     for(int count = 1; count <= lineNumber; count++){
+         canvas.drawLine(leftX, bottomOfGrid, leftX, topOfGrid);
+         leftX = leftX + spaceHorizontal;
+     }
+    
+    
+    }
+
+
+
+
+}
